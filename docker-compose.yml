@@ -1,9 +1,9 @@
 services:
   bot:
-    container_name: smocker-bot
+    container_name: smoker-bot
     build: .
     env_file:
       - .env
     restart: no
     volumes:
-      - /var/lib/smockerbot/db:/app/src/database
+      - /var/lib/smokerbot/db:/app/src/database

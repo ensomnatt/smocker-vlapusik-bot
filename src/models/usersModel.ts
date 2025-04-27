@@ -3,7 +3,7 @@ import db from "../database/database"
 export class UsersModel {
   add(userID: number) {
     try {
-      db.prepare("INSERT INTO TABLE users (user_id) VALUES (?)").run(userID);
+      db.prepare("INSERT INTO users (user_id) VALUES (?)").run(userID);
       console.log(`пользователь ${userID} добавлен в бд`);
     } catch (error) {
       console.error(`ошибка при добавлении пользователя в бд: ${error}`);
