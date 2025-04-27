@@ -21,6 +21,16 @@ class CgrController {
         this.usersModel.add(ctx.from.id);
       }
 
+      const nextCgr = await this.usersModel.nextCgr(ctx.from.id);
+      const currentDate = DateUtils.getCurrentDate().toSeconds();
+      if (nextCgr === null) throw new Error("nextCgr is null");
+
+      if (currentDate < nextCgr) {
+        const msg = "ты сможешь покурить через " + DateUtils.unixToString(nextCgr - currentDate);
+        await View.sendMessage(ctx, msg);
+        return
+      }
+
       const cgrCount = RandomController.getCgrCount();
       if (cgrCount === 11) {
         console.log(`пользователь ${ctx.from.username} сдох от рака легких`);
@@ -29,8 +39,8 @@ class CgrController {
         return;
       }
 
-      const nextCgr = DateUtils.getNextCgr();
-      this.usersModel.addCgrs(ctx.from.id, cgrCount, nextCgr);
+      const nextCgrTime = DateUtils.getNextCgr();
+      this.usersModel.addCgrs(ctx.from.id, cgrCount, nextCgrTime);
       await View.sendMessage(ctx, this.prepareMsg(cgrCount, false));
     } catch (error) {
       console.error(`ошибка при курении: ${error}`);
@@ -47,8 +57,10 @@ class CgrController {
       case 3:
       case 4:
         message += "сигареты";
+        break;
       default:
         message += "сигарет";
+        break;
     }
 
     if (isGetCgrCount) message += " за все время";
@@ -59,7 +71,7 @@ class CgrController {
   async getCgrCount(ctx: Context) {
     try {
       const cgrCount = await this.usersModel.cgrCount(ctx.from?.id || 0);
-      if (!cgrCount) throw new Error("cgrCount is null");
+      if (cgrCount === null) throw new Error("cgrCount is null");
 
       await View.sendMessage(ctx, this.prepareMsg(cgrCount, true));
     } catch (error) {

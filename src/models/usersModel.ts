@@ -30,11 +30,22 @@ export class UsersModel {
 
   async cgrCount(userID: number): Promise<number | null> {
     try {
-      const result = await db.prepare("SELECT cgr_count FROM users WHERE user_id = ?").get(userID) as {cgr_count: number};
+      const result = await db.prepare("SELECT cgrs_count FROM users WHERE user_id = ?").get(userID) as {cgrs_count: number};
 
-      return result.cgr_count;
+      return result.cgrs_count;
     } catch (error) {
       console.log(`ошибка при получении количества скуренных сигарет: ${error}`);
+      return null;
+    }
+  }
+
+  async nextCgr(userID: number): Promise<number | null> {
+    try {
+      const result = await db.prepare("SELECT next_cgr FROM users WHERE user_id = ?").get(userID) as {next_cgr: number};
+
+      return result.next_cgr;
+    } catch (error) {
+      console.error(`ошибка при получении времени следующей сигареты: ${error}`);
       return null;
     }
   }
