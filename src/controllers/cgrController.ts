@@ -30,7 +30,24 @@ class CgrController {
 
     const nextCgr = DateUtils.getNextCgr();
     this.usersModel.addCgrs(ctx.from.id, cgrCount, nextCgr);
-    await View.smoke(ctx, cgrCount);
+    await View.sendMessage(ctx, this.prepareMsg(cgrCount));
+  }
+
+  prepareMsg(cgrCount: number): string {
+    let message = `ты выкурил ${cgrCount}`;
+    switch (cgrCount) {
+      case 1:
+        message += "сигарету";
+        break;
+      case 2:
+      case 3:
+      case 4:
+        message += "сигареты";
+      default:
+        message += "сигарет";
+    }
+
+    return message;
   }
 }
 

@@ -32,7 +32,7 @@ class MainController {
 
     if (msgToSend) {
       console.log("бот несет хуйню");
-      await View.pizda(ctx, msgToSend);
+      await View.sendMessage(ctx, msgToSend);
     }
   }  
 }
