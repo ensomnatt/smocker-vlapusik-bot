@@ -28,6 +28,17 @@ export class UsersModel {
     }
   }
 
+  async cgrCount(userID: number): Promise<number | null> {
+    try {
+      const result = await db.prepare("SELECT cgr_count FROM users WHERE user_id = ?").get(userID) as {cgr_count: number};
+
+      return result.cgr_count;
+    } catch (error) {
+      console.log(`ошибка при получении количества скуренных сигарет: ${error}`);
+      return null;
+    }
+  }
+
   async checkIfUserExists(userID: number): Promise<boolean | null> {
     try {
       const result = await db.prepare("SELECT COUNT(*) AS count FROM users WHERE user_id = ?").get(userID) as { count: number };
