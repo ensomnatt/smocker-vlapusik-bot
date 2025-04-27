@@ -8,7 +8,6 @@ class MainController {
   }
 
   async sendPizda(ctx: Context) {
-    console.log("бот несет хуйню");
 
     let msg;
     if (ctx.message && "text" in ctx.message) msg = ctx.message.text;
@@ -18,11 +17,8 @@ class MainController {
       case "аластор":
         msgToSend = "пидорас";
         break;
-      case "лук":
-        msgToSend = "чеснок";
-        break;
       case "морс":
-        msgToSend = "долбоеб";
+        msgToSend = "кончелыга ебаная";
         break;
       case "шушмыр":
         msgToSend = "ахуенный";
@@ -35,7 +31,10 @@ class MainController {
         break;
     }  
 
-    if (msgToSend) await View.pizda(ctx, msgToSend);
+    if (msgToSend) {
+      console.log("бот несет хуйню");
+      await View.pizda(ctx, msgToSend);
+    }
   }
 }
 
