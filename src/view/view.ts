@@ -7,8 +7,16 @@ class View {
   }
 
   static async pizda(ctx: Context, msg: string) {
-    await ctx.sendMessage(msg);
+    await ctx.reply(msg);
   }
+
+  static async death(ctx: Context) {
+    await ctx.reply(botMessages.death);
+  }
+
+  static async smoke(ctx: Context, cgrCount: number) {
+    await ctx.reply(botMessages.smoke(cgrCount));
+  } 
 }
 
 export default View;

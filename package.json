@@ -20,6 +20,10 @@
     "typescript-eslint": "^8.31.0"
   },
   "dependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/luxon": "^3.6.2",
+    "better-sqlite3": "^11.9.1",
+    "luxon": "^3.6.1",
     "telegraf": "^4.16.3"
   }
 }

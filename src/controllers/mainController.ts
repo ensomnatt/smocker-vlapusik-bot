@@ -8,7 +8,6 @@ class MainController {
   }
 
   async sendPizda(ctx: Context) {
-
     let msg;
     if (ctx.message && "text" in ctx.message) msg = ctx.message.text;
     
@@ -35,7 +34,7 @@ class MainController {
       console.log("бот несет хуйню");
       await View.pizda(ctx, msgToSend);
     }
-  }
+  }  
 }
 
 export default MainController;
