@@ -1,0 +1,7 @@
+services:
+  bot:
+    container_name: smocker-bot
+    build: .
+    env_file:
+      - .env
+    restart: no
