@@ -4,6 +4,6 @@ services:
     build: .
     env_file:
       - .env
-    restart: no
+    restart: unless-stopped
     volumes:
       - /var/lib/smokerbot/db:/app/src/database
