@@ -28,6 +28,9 @@ class MainController {
       case "владик":
         msgToSend = "бог влапусиков";
         break;
+      case "огурчик":
+        msgToSend = "ебал козу";
+        break;
     }  
 
     if (msgToSend) {
