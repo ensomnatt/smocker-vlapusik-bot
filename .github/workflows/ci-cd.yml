@@ -29,9 +29,14 @@ jobs:
               cd ${{ env.APP_NAME }}
               git pull origin master
             else
-              echo "cloning repository for the first time"
+              echo "cloning repository for the first time..."
               git clone https://github.com/ensomnatt/${{ env.APP_NAME }}
               cd ${{ env.APP_NAME }}
+            fi
+
+            if [ ! -f .env ]; then
+              echo "creating .env file..."
+              echo "${{ secrets.BOT_TOKEN }}" > .env
             fi
 
             docker compose down
