@@ -36,7 +36,7 @@ jobs:
 
             if [ ! -f .env ]; then
               echo "creating .env file..."
-              echo "${{ secrets.BOT_TOKEN }}" > .env
+              echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > .env
             fi
 
             docker compose down
