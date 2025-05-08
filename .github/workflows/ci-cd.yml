@@ -39,5 +39,7 @@ jobs:
               echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" > .env
             fi
 
+            ls -a
+
             docker compose down
             docker compose up --build -d --remove-orphans
