@@ -13,6 +13,10 @@ class View {
   static async death(ctx: Context) {
     await ctx.reply(botMessages.death);
   }
+
+  static async gimn(ctx: Context) {
+    await ctx.reply(botMessages.gimn)
+  }
 }
 
 export default View;

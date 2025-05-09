@@ -37,11 +37,19 @@ class MainController {
       case "скелет":
         msgToSend = "пидор пидор пидор";
         break;
+      case "гимн":
+        msgToSend = "гимн";
+        break;
     }  
 
     if (msgToSend) {
-      console.log("бот несет хуйню");
-      await View.sendMessage(ctx, msgToSend);
+      if (msgToSend === "гимн") {
+        console.log("бот поет гимн");
+        await View.gimn(ctx);
+      } else {
+        console.log("бот несет хуйню");
+        await View.sendMessage(ctx, msgToSend);
+      }
     }
   }  
 }
