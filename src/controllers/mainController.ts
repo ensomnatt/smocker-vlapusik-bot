@@ -31,6 +31,12 @@ class MainController {
       case "огурчик":
         msgToSend = "ебал козу";
         break;
+      case "брофловски":
+        msgToSend = "узкоглазый";
+        break;
+      case "скелет":
+        msgToSend = "пидор пидор пидор";
+        break;
     }  
 
     if (msgToSend) {
