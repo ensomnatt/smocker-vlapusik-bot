@@ -37,6 +37,9 @@ class MainController {
       case "скелет":
         msgToSend = "пидор пидор пидор";
         break;
+      case "чудилка":
+        msgToSend = "богиня лучшая обожаю люблю секс";
+        break;
       case "гимн":
         msgToSend = "гимн";
         break;
